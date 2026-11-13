@@ -8,18 +8,18 @@
 
 ---
 
-## 🚀 Features
+## Features
 
 - **Live packet capture** on any network interface via Scapy
 - **Real-time terminal dashboard** powered by Rich (protocols, top IPs, alerts)
-- **Anomaly detection** — port scan detection & traffic spike detection
-- **Time-windowed analysis** — sliding windows prevent stale false positives
-- **Session reports** — auto-generated JSON or plain-text on exit
-- **Thread-safe** — capture and dashboard run concurrently without data races
+- **Anomaly detection** - port scan detection & traffic spike detection
+- **Time-windowed analysis** - sliding windows prevent stale false positives
+- **Session reports** - auto-generated JSON or plain-text on exit
+- **Thread-safe** - capture and dashboard run concurrently without data races
 
 ---
 
-## 📋 Requirements
+## Requirements
 
 | Requirement | Details |
 |-------------|---------|
@@ -31,7 +31,7 @@
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ```bash
 # 1. Clone the repository
@@ -56,7 +56,7 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Usage
+## Usage
 
 ```bash
 # Capture on auto-detected interface (default)
@@ -83,31 +83,31 @@ Press **Ctrl+C** at any time to stop the capture. A session report is automatica
 
 ---
 
-## 🖥️ Dashboard Layout
+## Dashboard Layout
 
 ```
-┌─ 📡 Network Packet Analyzer ─────────────────────────────────────┐
-│   UPTIME      PACKETS       DATA       UNIQUE IPs     ALERTS     │
-├─────────────────────────────┬─────────────────────────────────────┤
-│   Protocol Breakdown        │   Top 10 Source IPs                 │
-│   TCP   ████░░░░  60.0%     │   1. 192.168.1.1   1,200 pkts      │
-│   UDP   ██░░░░░░  30.0%     │   2. 8.8.8.8         400 pkts      │
-│   ICMP  █░░░░░░░  10.0%     │   ...                               │
-├─────────────────────────────┴─────────────────────────────────────┤
-│   🛡 Alerts                                                        │
-│   No anomalies detected — network traffic looks normal.           │
-└───────────────────────────────────────────────────────────────────┘
++-- Network Packet Analyzer ------------------------------------------+
+|   UPTIME      PACKETS       DATA       UNIQUE IPs     ALERTS        |
++-----------------------------+---------------------------------------+
+|   Protocol Breakdown        |   Top 10 Source IPs                  |
+|   TCP   ########....  60.0% |   1. 192.168.1.1   1,200 pkts        |
+|   UDP   ####........  30.0% |   2. 8.8.8.8         400 pkts        |
+|   ICMP  ##..........  10.0% |   ...                                 |
++-----------------------------+---------------------------------------+
+|   Alerts                                                            |
+|   No anomalies detected - network traffic looks normal.             |
++---------------------------------------------------------------------+
   Ctrl+C to stop capture and generate report
 ```
 
 ---
 
-## 🔍 Anomaly Detection
+## Anomaly Detection
 
 ### Port Scan Detection
 Fires when a single source IP contacts more than **10 unique destination ports** within a **2-minute sliding window**.
 
-- Uses a time-windowed approach — ports seen more than 2 minutes ago are evicted
+- Uses a time-windowed approach - ports seen more than 2 minutes ago are evicted
 - Prevents false positives in long-running sessions
 
 ### Traffic Spike Detection
@@ -117,31 +117,31 @@ All thresholds are configurable in [`config.py`](config.py).
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 network-packet-analyzer/
-├── main.py              # Entry point — CLI args, lifecycle orchestration
-├── config.py            # All tuneable parameters (thresholds, dirs, etc.)
-├── requirements.txt     # Direct dependencies only
-├── src/
-│   ├── analyzer.py      # Statistical engine + anomaly detection
-│   ├── capture.py       # Scapy packet sniffer
-│   ├── dashboard.py     # Rich live terminal dashboard
-│   ├── parser.py        # Scapy packet → TypedDict decoder
-│   └── reporter.py      # Session report generator (JSON / TXT)
-├── tests/
-│   ├── test_analyzer.py # Unit tests for PacketAnalyzer
-│   ├── test_parser.py   # Unit tests for parse_packet()
-│   └── test_reporter.py # Unit tests for Reporter
-├── reports/             # Auto-generated session reports (git-ignored)
-├── docs/                # Additional documentation
-└── samples/             # Sample .pcap files for offline testing
+|-- main.py              # Entry point - CLI args, lifecycle orchestration
+|-- config.py            # All tuneable parameters (thresholds, dirs, etc.)
+|-- requirements.txt     # Direct dependencies only
+|-- src/
+|   |-- analyzer.py      # Statistical engine + anomaly detection
+|   |-- capture.py       # Scapy packet sniffer
+|   |-- dashboard.py     # Rich live terminal dashboard
+|   |-- parser.py        # Scapy packet decoder
+|   +-- reporter.py      # Session report generator (JSON / TXT)
+|-- tests/
+|   |-- test_analyzer.py # Unit tests for PacketAnalyzer
+|   |-- test_parser.py   # Unit tests for parse_packet()
+|   +-- test_reporter.py # Unit tests for Reporter
+|-- reports/             # Auto-generated session reports (git-ignored)
+|-- docs/                # Additional documentation
++-- samples/             # Sample .pcap files for offline testing
 ```
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ```bash
 pip install pytest
@@ -150,7 +150,7 @@ pytest tests/ -v
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 Edit [`config.py`](config.py) to tune the tool without touching any module:
 
@@ -170,12 +170,12 @@ Edit [`config.py`](config.py) to tune the tool without touching any module:
 
 ---
 
-## 📄 License
+## License
 
-This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for details.
+This project is licensed under the **MIT License** - see [LICENSE](LICENSE) for details.
 
 ---
 
-## 👤 Author
+## Author
 
-**Shivani Agarwal � [GitHub Profile](https://github.com/Shivani-1560)
+**Shivani Agarwal** - [GitHub Profile](https://github.com/Shivani-1560)
